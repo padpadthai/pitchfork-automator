@@ -62,7 +62,7 @@ browser_automation = [
 
 
 def main():
-    with ProcessPoolExecutor(6) as executor:
+    with ThreadPoolExecutor(6) as executor:
         executor.map(execute_browser_automation, browser_automation)
 
 
@@ -128,9 +128,10 @@ def automate_browser(review_count: int, first_scrollable_url: str, browser_rende
             scroll_start = review_detail.location["y"]
             log.debug("Automated review at %s", browser.current_url)
             if len(browser.find_elements_by_class_name("review-detail")) <= reviews_processed:
+                log.warning("Next page not loaded - waiting at url '%s' for 15 seconds and attempting to trigger another reload",
+                            browser.current_url)
                 browser.execute_script("window.scrollTo(arguments[0], arguments[1]);", scroll_start,
                                        browser.find_element_by_css_selector("body").size["height"])
-                log.warning("Next page not loaded - waiting at url '%s'", browser.current_url)
                 sleep(15)
         except BaseException as e:
             log.error("A problem occurred while automating review at '%s'", browser.current_url)
