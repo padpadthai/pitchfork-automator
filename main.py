@@ -36,6 +36,26 @@ log.setLevel(logging.DEBUG)
 browser_automation = [
     (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
     (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
+    (10, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 5),
     # (1000, "https://pitchfork.com/reviews/albums/jason-molina-eight-gates/", 50),
     # (1000, "https://pitchfork.com/reviews/albums/czardust-the-raw-material/", 50),
     # (1000, "https://pitchfork.com/reviews/albums/a-boogie-wit-da-hoodie-hoodie-szn/", 50),
@@ -62,8 +82,10 @@ browser_automation = [
 
 
 def main():
-    with ThreadPoolExecutor(6) as executor:
+    log.debug("Starting")
+    with ThreadPoolExecutor(2) as executor:
         executor.map(execute_browser_automation, browser_automation)
+    log.debug("Stopping")
 
 
 def execute_browser_automation(browser_automation_tuple: Tuple[int, str, int]):
